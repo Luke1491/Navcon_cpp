@@ -7,26 +7,29 @@ to perform stability working
 */
 
 #include "NAVCON_SYMBOLS.h"
+#include "Statek.h"
 
-#ifdef NAVCON_AVR_OS_H
+#ifndef NAVCON_AVR_OS_H
 #define NAVCON_AVR_OS_H
 
-
-constexpr uint8_t hardwareArrayLen = 100;
+const unsigned char hardwareArrayLen = 100;
 ///////////////////////////////////////////////////////////////////
 class Navcon_avr_os
 {
-uint8_t hardwareInfo [hardwareArrayLen];
 
 public:
-//constructors
+char hardwareInfo [hardwareArrayLen];
+
+
+//constructor
 Navcon_avr_os();
-Navcon_avr_os(uint8_t mode);
+
 //destructor
 ~Navcon_avr_os();
 
-uint8_t showHandwareInfo( uint8_t IndexNo);
-void pushHardwareInfo(uint8_t data, uint8_t IndexNo);
+char showHardwareInfo( unsigned char IndexNo);
+void getHardwareInfo(char data, char IndexNo);
+
 	
 };
 
