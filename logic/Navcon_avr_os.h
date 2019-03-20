@@ -9,6 +9,7 @@ to perform stability working
 #define NAVCON_AVR_OS_H
 
 #include "NAVCON_SYMBOLS.h"
+#include "Statek.h"
 
 
 
@@ -20,7 +21,7 @@ class Navcon_avr_os
 
 public:
 char hardwareInfo [hardwareArrayLen];
-
+Statek ship;
 
 //constructor
 Navcon_avr_os();
@@ -29,10 +30,7 @@ Navcon_avr_os();
 ~Navcon_avr_os();
 
 char showHardwareInfo( unsigned char IndexNo);
-//void getHardwareInfo(char data, char IndexNo);
-void init(void);
 
-	
 };
 
 #endif

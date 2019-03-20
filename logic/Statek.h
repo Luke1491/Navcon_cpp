@@ -90,7 +90,7 @@ public:
 	//void updateLOG(const long &latitude, const long &longitude, char &PassedDistanceInOneMinute);						//update log give reference to position and variable to update
 	//void updateGPS(long &latitude, long &longitude);																	//update gps - give variables to change
 	void calculateMovement();																							//calculate ship maneuvring
-	
+	//friend void GPS::calculatePosition(unsigned int course, int speed, long latitude, long longitude, char durationTime);
 };
 
 #endif

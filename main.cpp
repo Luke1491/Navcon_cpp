@@ -10,13 +10,12 @@
 #include "logic/Statek.h"
 
 Navcon_avr_os os;
-//extern Statek ship;
+
 
 int main(void)
 {
-	os.init();
-	Statek ship;
-	ship.updateAll();
+	
+	
     while (1) 
     {
 		

@@ -75,12 +75,12 @@ void Statek::updateAll(void)
 	os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING];				//add seconds depend of NAVCON_MAIN_REF...  to voyage time
 	
 	//-------------------GPS---------------------------
-	//gps.calculatePosition(
-					//shipVoyageData.course, 
-					//shipVoyageData.speed, 
-					//shipVoyageData.posLat, 
-					//shipVoyageData.posLong, 
-					//os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING]);
+	gps.calculatePosition(
+					shipVoyageData.course, 
+					shipVoyageData.speed, 
+					&shipVoyageData.posLat, 
+					&shipVoyageData.posLong, 
+					os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING]);
 	
 	//-------------------AUTOPILOT---------------------
 	//autopliot.calculateAndUpdate(&shipmodel, &shipVoyageData);				//update autopilot settings

@@ -25,7 +25,3 @@ char Navcon_avr_os::showHardwareInfo( unsigned char IndexNo)
 	return  hardwareInfo[IndexNo];
 }
 
-void Navcon_avr_os::init(void)
-{
-	//Statek ship;
-}
