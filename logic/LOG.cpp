@@ -4,13 +4,24 @@
 
 extern Navcon_avr_os os;
 
-// LOG::LOG() 
-// {
-// 	/*distanceMadeFrom1MinutePast = 0;*/
-// }
-// 
-// 	
-// LOG::~LOG(){}
+LOG::LOG() 
+{
+	distanceMadeFrom1MinutePast = 0;
+	char nameText[] = "LOG ver 1.0.0";
+	if(sizeof(nameText) < (14*(sizeof(char)))) 
+	{
+		strncpy(this -> name , nameText, sizeof(this -> name) - 1);
+		status = 0;
+	}
+	else
+	{
+		status = 1; //name text too long
+	}
+	
+}
+
+	
+LOG::~LOG(){}
 
 //---------------------------------------------------------------------------------
 /*
@@ -37,3 +48,6 @@ char LOG::update1minute(const int speed)														//speed in cables
 	
 	return 0;
 }
+
+char * LOG::WhatIsYourName(void)	{return this -> name;}
+char LOG::showStatus(void)			{return this ->status;}

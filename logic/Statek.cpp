@@ -6,10 +6,12 @@ Modified: 18-03-2018 by Luke1491
 
 */
 
-#include "NAVCON_SYMBOLS.h"
-#include "LOG.h"
-#include "Statek.h"
 #include "Navcon_avr_os.h"
+#include "Statek.h"
+#include "LOG.h"
+#include "NAVCON_SYMBOLS.h"
+
+
 extern Navcon_avr_os os;
 
 Statek::Statek()
