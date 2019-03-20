@@ -13,7 +13,6 @@ Modified: 15-03-2018 by Luke1491
 Navcon_avr_os::Navcon_avr_os()
 {
 	//create main modules to proper console operating
-	Statek ship;
 	//Ethernet outputCommunication;
 	//Konsola konsole;
 	//Interface interface;
@@ -24,4 +23,9 @@ Navcon_avr_os::~Navcon_avr_os(){}
 char Navcon_avr_os::showHardwareInfo( unsigned char IndexNo)
 {
 	return  hardwareInfo[IndexNo];
+}
+
+void Navcon_avr_os::init(void)
+{
+	//Statek ship;
 }

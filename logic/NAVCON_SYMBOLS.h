@@ -1,4 +1,4 @@
-#ifdef NAVCON_SYMBOLS
+#ifndef NAVCON_SYMBOLS
 #define NAVCON_SYMBOLS
 
 //Symbols used in Navcon_avr_os class

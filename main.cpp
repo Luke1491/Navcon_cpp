@@ -7,15 +7,15 @@
 
 #include <avr/io.h>
 #include "logic/Navcon_avr_os.h"
+#include "logic/Statek.h"
 
+Navcon_avr_os os;
+//extern Statek ship;
 
 int main(void)
 {
-
-	Navcon_avr_os os;
-    /* Replace with your application code */
-	extern Statek ship;
-	
+	os.init();
+	Statek ship;
 	ship.updateAll();
     while (1) 
     {

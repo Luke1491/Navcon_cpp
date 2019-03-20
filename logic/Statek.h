@@ -3,14 +3,17 @@ Statek - class used to compute ship param and stored it in class array
 
 
 */
+#ifndef STATEK_H
+#define STATEK_H
+
 
 #include "NAVCON_SYMBOLS.h"
-#include "Autopilot.h"
 #include "GPS.h"
 #include "LOG.h"
 
-#ifndef STATEK_H
-#define STATEK_H
+#include <string.h>
+
+
 
 ///////////////////////////////////////////////////////////////////
 class Statek
@@ -22,7 +25,7 @@ private:
 		char navStatus;					//0d 0 do 15
 		char pas;
 		char typKomunikatu;
-		char imoNumber;					//7 digits 
+		long imoNumber;					//7 digits 
 		char callSign[8];
 		char shipName[21];
 		char typeOfShip;				// 1 do 99
@@ -37,7 +40,7 @@ private:
 		int speed;						//current speed (accuracy = 0,1 kt (speed times 10))
 		long posLong;					//longitude with no comma (times 6, ex: 045,345123 -> posLong = 45345123)
 		long posLat;					//latitude with no comma (times 6, ex: 45,123456 -> posLong = 45123456)
-		unsigned char destination[21];  //voyage destination(all 21 char must be filled, not used chars fill with @ ex: SZCZECIN@@@@@@@@@@@@@)
+		char destination[21];			//voyage destination(all 21 char must be filled, not used chars fill with @ ex: SZCZECIN@@@@@@@@@@@@@)
 		unsigned char draught;			//current draught precission to 0,1m, ex: 6,6m -> draught = 66;
 		unsigned char ETA_month;        //1 d0 12
 		unsigned char ETA_day;          //1 do 31
@@ -66,14 +69,15 @@ private:
 	Ship_model shipmodel;
 	Ship_data shipData;
 	Ship_voyage_data shipVoyageData;
-
+		
 	
 	//members
-	Autopilot autopliot(NAVCON_AUTOPILOT_ON , const Ship_model &shipmodel, const Ship_voyage_data &voyageData);			//initialize autopilot with mode and 
-	LOG log(const long &latitude, const long &longitude);																//initialize ship's log with current position (or default position)
-	GPS gps(const long &latitude, const long &longitude);
-
+	//Autopilot autopliot(NAVCON_AUTOPILOT_ON , const Ship_model &shipmodel, const Ship_voyage_data &voyageData);			//initialize autopilot with mode and 
+																				//initialize ship's log with current position (or default position)
+	GPS gps;
+	LOG log;
 public:	
+	
 	//constructor
 	Statek();
 

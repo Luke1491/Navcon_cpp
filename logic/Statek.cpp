@@ -6,21 +6,23 @@ Modified: 18-03-2018 by Luke1491
 
 */
 
+#include "NAVCON_SYMBOLS.h"
+#include "LOG.h"
 #include "Statek.h"
-
+#include "Navcon_avr_os.h"
 extern Navcon_avr_os os;
 
 Statek::Statek()
 {
 	shipmodel.maxSteerAngle = 35;
 	
-	shipData.mmsi = "123456789";
+	strncpy(shipData.mmsi, "123456789", sizeof(shipData.mmsi) - 1);
 	shipData.navStatus = 1;
 	shipData.pas = 0;
 	shipData.typKomunikatu = 1;
 	shipData.imoNumber = 1234567;
-	shipData.callSign = "BWX12SD";
-	shipData.shipName = "JAN KUSOCINSKI";
+	strncpy(shipData.callSign, "BWX12SD", sizeof(shipData.callSign) - 1);
+	strncpy(shipData.shipName, "JAN KUSOCINSKI", sizeof(shipData.shipName) - 1);
 	shipData.typeOfShip = 5;
 	shipData.dimA = 130;
 	shipData.dimB = 18;
@@ -30,7 +32,7 @@ Statek::Statek()
 	shipVoyageData.speed = 100;
 	shipVoyageData.posLat = 54000000L;
 	shipVoyageData.posLong = 15000000L;
-	shipVoyageData.destination = "SZCZECIN@@@@@@@@@@@@";
+	strncpy(shipVoyageData.destination, "SZCZECIN@@@@@@@@@@@@", sizeof(shipVoyageData.destination) - 1);
 	shipVoyageData.draught = 72;
 	shipVoyageData.ETA_day = 1;
 	shipVoyageData.ETA_month = 4;
@@ -49,6 +51,7 @@ Statek::Statek()
 	shipVoyageData.rzadaneUstawienieSteru = 0;
 	shipVoyageData.totalTimeofVoyage = 0;
 	
+	
 }
 //destructor
 Statek::~Statek(){}
@@ -56,7 +59,7 @@ Statek::~Statek(){}
 //**********************************************************
 void Statek::updateAll(void)
 {
-	static countOfCalls = 0;												//call counter which represents seconds
+	static char countOfCalls = 0;												//call counter which represents seconds
 	countOfCalls += os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING];			//add seconds depend of NAVCON_MAIN_REF...  to voyage time
 	
 	//------------------LOG----------------------------
@@ -64,21 +67,21 @@ void Statek::updateAll(void)
 	{
 		countOfCalls = 0;													//reset timer
 		shipVoyageData.distance1Minute = log.update1minute(					//compute distance after minute												
-												shipVoyageData.speed);	
+											shipVoyageData.speed);	
 	}												
 	shipVoyageData.totalTimeofVoyage += 
-	Navcon_avr_os::hardwareInfo[NAVCON_MAIN_REFRESH_RATING];				//add seconds depend of NAVCON_MAIN_REF...  to voyage time
+	os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING];				//add seconds depend of NAVCON_MAIN_REF...  to voyage time
 	
 	//-------------------GPS---------------------------
-	gps.calculatePosition(
-					shipVoyageData.course, 
-					shipVoyageData.speed, 
-					shipVoyageData.posLat, 
-					shipVoyageData.posLong, 
-					os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING]);
+	//gps.calculatePosition(
+					//shipVoyageData.course, 
+					//shipVoyageData.speed, 
+					//shipVoyageData.posLat, 
+					//shipVoyageData.posLong, 
+					//os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING]);
 	
 	//-------------------AUTOPILOT---------------------
-	autopliot.calculateAndUpdate(&shipmodel, &shipVoyageData,);				//update autopilot settings
+	//autopliot.calculateAndUpdate(&shipmodel, &shipVoyageData);				//update autopilot settings
 	
 	//------------------OWN SHIP-----------------------
 	this -> calculateMovement();											//calculate ship movement

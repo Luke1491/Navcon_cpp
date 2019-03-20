@@ -5,12 +5,13 @@ to perform stability working
 
 
 */
-
-#include "NAVCON_SYMBOLS.h"
-#include "Statek.h"
-
 #ifndef NAVCON_AVR_OS_H
 #define NAVCON_AVR_OS_H
+
+#include "NAVCON_SYMBOLS.h"
+
+
+
 
 const unsigned char hardwareArrayLen = 100;
 ///////////////////////////////////////////////////////////////////
@@ -28,7 +29,8 @@ Navcon_avr_os();
 ~Navcon_avr_os();
 
 char showHardwareInfo( unsigned char IndexNo);
-void getHardwareInfo(char data, char IndexNo);
+//void getHardwareInfo(char data, char IndexNo);
+void init(void);
 
 	
 };
