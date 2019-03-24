@@ -5,13 +5,16 @@
 
 #include "Ship_model.h"
 #include "Ship_voyage_data.h"
+#include "Pletwa_sterowa.h"
 
 //class Statek;
 class Autopilot
 {
 	
 	private:
-	//PletwaSterowa steer;
+	Ship_model *shipModel;
+	Ship_voyage_data *shipVoyageData;
+	Pletwa_sterowa *steer;
 	//Sruba propeller;
 	char mode;
 	char requestedSteerAngle;
@@ -20,14 +23,14 @@ class Autopilot
 	
 	public:
 
-	Autopilot(void);
-	Autopilot(int autopilotMode);
+	Autopilot(Ship_model* model, Ship_voyage_data* shipVoyageDat);
+	Autopilot(int autopilotMode, Ship_model* model, Ship_voyage_data* shipVoyageDat);
 
 	~Autopilot();
 
-	void calculateAndUpdate(Ship_model*model, Ship_voyage_data*voyage);
+	void calculateAndUpdate();
 	void changeMode(char autopilotMode);
-	int calculateNewSteerAngle(Ship_model**model, Ship_voyage_data**voyage);
-	int calculateNewPropelerRotation(Ship_model**model, Ship_voyage_data**voyage);
+	int calculateNewSteerAngle();
+	int calculateNewPropelerRotation();
 };
 #endif

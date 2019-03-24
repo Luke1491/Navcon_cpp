@@ -12,10 +12,11 @@ Modified: 23-03-2018 by Luke1491
 Statek::Statek()
 {
 	shipModel->maxSteerAngle = 35;
+	shipModel->SteerOneDegreeMoveRatting = 29;	//0,29 s to move steer by 1 degree
 	
 	strncpy(shipData->mmsi, "123456789", sizeof(shipData->mmsi) - 1);
 	shipData->navStatus = 1;
-	shipData->pas = 0;
+	shipData->pas = 0; 
 	shipData->typKomunikatu = 1;
 	shipData->imoNumber = 1234567;
 	strncpy(shipData->callSign, "BWX12SD", sizeof(shipData->callSign) - 1);
@@ -42,6 +43,7 @@ Statek::Statek()
 	shipVoyageData->currentROT = 0;
 	shipVoyageData->computedROT = 0;
 	shipVoyageData->currentSteerWheelPos = 0;
+	shipVoyageData->currentSteerPos = 0;
 	shipVoyageData->rzadanaSpeed = 10;
 	shipVoyageData->nastawaSpeed = 10;
 	shipVoyageData->rzadanyCourse = 0;
@@ -63,7 +65,7 @@ Statek::Statek()
 	LOG LG;
 	log = &LG;
 	
-	Autopilot autoP(1);
+	Autopilot autoP(NAVCON_AUTOPILOT_ON, shipModel, shipVoyageData);
 	autopilot = &autoP;
 	
 	
@@ -96,7 +98,7 @@ void Statek::updateAll(void)
 					hardwareInfo[NAVCON_MAIN_REFRESH_RATING]);
 	
 	//-------------------AUTOPILOT---------------------
-	autopilot->calculateAndUpdate(shipModel, shipVoyageData);				//update autopilot settings
+	autopilot->calculateAndUpdate();				//update autopilot settings
 	
 	//------------------OWN SHIP-----------------------
 	this -> calculateMovement();											//calculate ship movement

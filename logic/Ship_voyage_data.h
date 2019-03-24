@@ -20,6 +20,7 @@ struct Ship_voyage_data
 	long currentROT;				//precission 0,01degree/minute ex: ROT = 10degrees/minute -> currentRoot = 1000
 	int computedROT;                // kierunek ROT aktualny inicjowany przez -5 tylko do pierwszego rozruchu funkcji
 	char currentSteerWheelPos;		//current steerwheel position
+	char currentSteerPos;			//current steer position
 	int rzadanaSpeed;               //rzadana predkosc w oparciu o nastawe pr?dko?ci nastawaSpeed
 	char nastawaSpeed;              //0d -8 do +8 nastawa pr?dko?ci zmieniana dotykowymi przyciskami
 	int rzadanyCourse;
