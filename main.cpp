@@ -6,15 +6,16 @@
  */ 
 
 #include <avr/io.h>
-#include "logic/Navcon_avr_os.h"
+#include "logic/common.h"
 #include "logic/Statek.h"
 
-Navcon_avr_os os;
 
 
 int main(void)
 {
 	
+	init();
+	createModules();
 	
     while (1) 
     {

@@ -1,8 +1,8 @@
 
 #include "LOG.h"
-#include "Navcon_avr_os.h"
+#include "common.h"
+#include "NAVCON_SYMBOLS.h"
 
-extern Navcon_avr_os os;
 
 LOG::LOG() 
 {
@@ -33,10 +33,10 @@ char LOG::update1minute(const int speed)														//speed in cables
 	static char timeTo1Minute = 0;																//timer for time counting check
 	static char distanceInMicroCables = 0;														//distance made after 1 minute
 
-	unsigned int microDistance = speed * 2778 * os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING];    //microdistance in uCable [ucables/s * s]
+	unsigned int microDistance = speed * 2778 * hardwareInfo[NAVCON_MAIN_REFRESH_RATING];    //microdistance in uCable [ucables/s * s]
 	distanceInMicroCables += microDistance;
 	
-	timeTo1Minute += os.hardwareInfo[NAVCON_MAIN_REFRESH_RATING];							    //add time of seconds which represents console update interval
+	timeTo1Minute += hardwareInfo[NAVCON_MAIN_REFRESH_RATING];							    //add time of seconds which represents console update interval
 	
 	if(timeTo1Minute >= 60)																		//one minute reached
 	{
