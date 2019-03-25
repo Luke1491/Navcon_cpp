@@ -7,16 +7,24 @@ Autopilot::Autopilot(Ship_model* model, Ship_voyage_data* shipVoyageDat):mode(1)
 {
 	shipModel = model;
 	shipVoyageData = shipVoyageDat;
-	Pletwa_sterowa PL_STER(shipModel, shipVoyageDat);
+	Pletwa_sterowa PL_STER(shipModel, &shipVoyageDat->currentSteerPos);
 	steer = &PL_STER;
+	
+	Sruba PROP(model->propelerMaxRevolution, model->propelerChangeRevolutionRatting, &shipVoyageDat->currentPropellerRevolution);
+	propeller = &PROP;
 }
 	
 Autopilot::Autopilot(int autopilotMode, Ship_model* model, Ship_voyage_data* shipVoyageDat)
 {
 	shipModel = model;
 	shipVoyageData = shipVoyageDat;
-	Pletwa_sterowa PL_STER(shipModel, shipVoyageDat);
+	
+	Pletwa_sterowa PL_STER(shipModel, &shipVoyageDat->currentSteerPos);
 	steer = &PL_STER;
+	
+	Sruba PROP(model->propelerMaxRevolution, model->propelerChangeRevolutionRatting, &shipVoyageDat->currentPropellerRevolution);
+	propeller = &PROP;
+	
 	this ->mode = autopilotMode;
 }
 	
@@ -30,6 +38,7 @@ void Autopilot::calculateAndUpdate()
 		requestedSteerAngle = this -> calculateNewSteerAngle();
 		requestedPropelerRotation = this -> calculateNewPropelerRotation();
 		steer->moveSteer(requestedSteerAngle);
+		propeller->propelerChangeRevolution(requestedPropelerRotation);
 	
 	}
 	else
@@ -46,9 +55,11 @@ void Autopilot::changeMode(char autopilotMode)
 int Autopilot::calculateNewSteerAngle()
 {
 	return 0;
+	//TO DO claculate steer angle
 }
 
 int Autopilot::calculateNewPropelerRotation()
 {
 	return 0;
+	//TO DO claculate propeller rotation
 }

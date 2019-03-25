@@ -12,7 +12,9 @@ Modified: 23-03-2018 by Luke1491
 Statek::Statek()
 {
 	shipModel->maxSteerAngle = 35;
-	shipModel->SteerOneDegreeMoveRatting = 29;	//0,29 s to move steer by 1 degree
+	shipModel->steerOneDegreeMoveRatting = 29;			//0,29 s to move steer by 1 degree
+	shipModel->propelerMaxRevolution = 160;				//max propeller revolution is 160 rpm
+	shipModel->propelerChangeRevolutionRatting = 10;	//0,1s to change propeller rotation by +/- one revolution
 	
 	strncpy(shipData->mmsi, "123456789", sizeof(shipData->mmsi) - 1);
 	shipData->navStatus = 1;
@@ -44,6 +46,7 @@ Statek::Statek()
 	shipVoyageData->computedROT = 0;
 	shipVoyageData->currentSteerWheelPos = 0;
 	shipVoyageData->currentSteerPos = 0;
+	shipVoyageData->currentPropellerRevolution = 120; //120 rpm
 	shipVoyageData->rzadanaSpeed = 10;
 	shipVoyageData->nastawaSpeed = 10;
 	shipVoyageData->rzadanyCourse = 0;

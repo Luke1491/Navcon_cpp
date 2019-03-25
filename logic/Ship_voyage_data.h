@@ -21,6 +21,7 @@ struct Ship_voyage_data
 	int computedROT;                // kierunek ROT aktualny inicjowany przez -5 tylko do pierwszego rozruchu funkcji
 	char currentSteerWheelPos;		//current steerwheel position
 	char currentSteerPos;			//current steer position
+	int currentPropellerRevolution; // current propeller revolution
 	int rzadanaSpeed;               //rzadana predkosc w oparciu o nastawe pr?dko?ci nastawaSpeed
 	char nastawaSpeed;              //0d -8 do +8 nastawa pr?dko?ci zmieniana dotykowymi przyciskami
 	int rzadanyCourse;

@@ -6,6 +6,7 @@
 #include "Ship_model.h"
 #include "Ship_voyage_data.h"
 #include "Pletwa_sterowa.h"
+#include "Sruba.h"
 
 //class Statek;
 class Autopilot
@@ -15,7 +16,7 @@ class Autopilot
 	Ship_model *shipModel;
 	Ship_voyage_data *shipVoyageData;
 	Pletwa_sterowa *steer;
-	//Sruba propeller;
+	Sruba *propeller;
 	char mode;
 	char requestedSteerAngle;
 	char requestedPropelerRotation;

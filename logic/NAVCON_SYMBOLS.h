@@ -10,6 +10,7 @@
 #define NAVCON_SPI_ON						4
 #define NAVCON_MAIN_REFRESH_RATING			5		//index of refresh rating (all console refresh rating depends on this variable) 1s = 100 - max 2,55s (255 in char variable)
 #define NAVCON_STEER_REFRESH_RATING			6
+#define NAVCON_PROPELLER_REFRESH_RATING		7
 
 //critical parameters
 

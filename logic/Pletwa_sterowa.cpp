@@ -2,12 +2,12 @@
 #include "NAVCON_SYMBOLS.h"
 #include "common.h"
 
-Pletwa_sterowa::Pletwa_sterowa(const Ship_model* model, Ship_voyage_data* steerVoyageData)
+Pletwa_sterowa::Pletwa_sterowa(const Ship_model* model, char* steerAngle)
 {
-	steerShipVoyageData = steerVoyageData;
+	steerVoyageAngle = steerAngle;
 	currentAngle = 0;
 	maxAngle = model->maxSteerAngle;
-	moveRatting = model->SteerOneDegreeMoveRatting;
+	moveRatting = model->steerOneDegreeMoveRatting;
 	hardwareInfo[NAVCON_STEER_REFRESH_RATING] = moveRatting; //time in seconds/100 to move steer by 1 degree (set timer to call move steer function)
 	
 }
@@ -33,5 +33,5 @@ void Pletwa_sterowa::pletwaSterowaInterruptFunction(void)
 		if(diff > 0){currentAngle += 1;}
 		if(diff < 0){currentAngle -= 1;}
 	}
-	steerShipVoyageData->currentSteerPos = currentAngle;
+	*steerVoyageAngle = currentAngle;
 }
