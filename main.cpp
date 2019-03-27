@@ -6,16 +6,16 @@
  */ 
 
 #include <avr/io.h>
+#include "logic/Konsola.h"
+#include "logic/Interface.h"
 #include "logic/common.h"
-#include "logic/Statek.h"
+
 
 
 
 int main(void)
 {
 	
-	init();
-	createModules();
 	
     while (1) 
     {

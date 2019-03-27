@@ -6,7 +6,6 @@ Statek - class used to compute ship param and stored it in class array
 #ifndef STATEK_H
 #define STATEK_H
 
-
 #include "NAVCON_SYMBOLS.h"
 #include "GPS.h"
 #include "LOG.h"
@@ -42,6 +41,8 @@ public:
 	//void updateGPS(long &latitude, long &longitude);																	//update gps - give variables to change
 	void calculateMovement();																							//calculate ship maneuvring
 	//friend void GPS::calculatePosition(unsigned int course, int speed, long latitude, long longitude, char durationTime);
+	Ship_voyage_data* showVoyageData();
+	
 };
 
 #endif

@@ -7,10 +7,18 @@ Modified: 22-03-2018 by Luke1491
 */
 
 #include "common.h"
+#include "Konsola.h"
 #include "Statek.h"
+#include "Interface.h"
+
 
 const unsigned char hardwareArrayLen = 100;
 char hardwareInfo [hardwareArrayLen];
+
+Statek ship;
+Konsola console;
+Interface interface(ship.shipVoyageData->course, ship.shipVoyageData->speed, ship.shipVoyageData->rzadanyCourse, ship.shipVoyageData->rzadanaSpeed );
+
 
 void init(void)
 {
@@ -21,5 +29,4 @@ void init(void)
 
 void createModules(void)
 {
-	Statek ship;
 }

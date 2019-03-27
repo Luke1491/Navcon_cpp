@@ -8,6 +8,7 @@ Modified: 23-03-2018 by Luke1491
 #include "Statek.h"
 #include "common.h"
 #include <string.h>
+//#include <cstdlib>
 
 Statek::Statek()
 {
@@ -93,12 +94,12 @@ void Statek::updateAll(void)
 	hardwareInfo[NAVCON_MAIN_REFRESH_RATING];				//add seconds depend of NAVCON_MAIN_REF...  to voyage time
 	
 	//-------------------GPS---------------------------
-	gps->calculatePosition(
+	gps->calculatePosition(									//function update lat and long in ship::shipVoyageData->lat and long
 					shipVoyageData->course, 
 					shipVoyageData->speed, 
 					&shipVoyageData->posLat, 
 					&shipVoyageData->posLong, 
-					hardwareInfo[NAVCON_MAIN_REFRESH_RATING]);
+					hardwareInfo[NAVCON_MAIN_REFRESH_RATING]);	//last parameter is required to calculate distance needed to claculate position
 	
 	//-------------------AUTOPILOT---------------------
 	autopilot->calculateAndUpdate();				//update autopilot settings
@@ -112,3 +113,10 @@ void Statek::calculateMovement()
 {
 	//calculating ship movement
 }
+
+Ship_voyage_data* Statek::showVoyageData()
+{
+	return shipVoyageData;
+}
+
+
