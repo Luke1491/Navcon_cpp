@@ -1,16 +1,21 @@
 #ifndef COMM_H
 #define COMM_H
-#include "Statek.h"
+#include "Ship.h"
 #include "Interface.h"
-#include "Konsola.h"
+#include "Console.h"
 
 
-extern char hardwareInfo [];
+extern volatile char consoleMainArray [];
 
-//class Konsola;
-extern Konsola console;
-extern Statek ship;
+//class Console;
+extern Console console;
+extern Ship ship;
 extern Interface interface;
+
+extern const Ship_model defaultShipModel;
+extern const Ship_data defaultShipData;
+extern const Ship_voyage_data defaultShipVoyageData;
+
 void init(void);
 //create main console modules
 void createModules(void);

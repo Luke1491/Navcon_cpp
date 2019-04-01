@@ -2,12 +2,12 @@
 #define SHIP_MODULE_HEADER_FILES_H
 
 #include "NAVCON_SYMBOLS.h"
-#include "Sruba.h"
-#include "Pletwa_sterowa.h"
+#include "Propeller.h"
+#include "Steer.h"
 #include "Autopilot.h"
 #include "GPS.h"
 #include "LOG.h"
-#include "Statek.h"
+#include "Ship.h"
 #include "Navcon_avr_os.h"
 
 #endif

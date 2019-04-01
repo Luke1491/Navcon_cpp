@@ -24,6 +24,7 @@ class GPS
 	void calculatePosition(unsigned int course, int speed, long* latitude, long* longitude, char durationTime);
 	char * WhatIsYourName(void);
 	char showStatus(void);
+	void reset(void);
 };
 
 #endif

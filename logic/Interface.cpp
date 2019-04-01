@@ -1,6 +1,7 @@
 #include "Interface.h"
 #include "common.h"
 #include "NAVCON_SYMBOLS.h"
+#include "Disp_manip_cog.h"
 
 Interface::Interface(const unsigned int &course, const int &speed, const int &rzadanyCourse, const int &rzadanaSpeed)
 {
@@ -21,7 +22,19 @@ void Interface::getDataToDisplay(const unsigned int &course, const int &speed, c
 	interfaceManipSpeed = rzadanaSpeed;
 }
 
-// void Interface::updateShipData(long data)
-// {
+void Interface::reset(void)
+{
+// 	rose->reset();
+// 	mainDispCog->reset();
+// 	mainDispSog->reset();
+// 	dispManipCog->reset();
+// 	dispManipSog->reset();
+// 	cogLed->reset();
+// 	sogLed->reset()->reset();
 	
-//}
+}
+
+void Interface::refreshDisplays()
+{
+	dispManipCog->ShowRequiredCourse(interfaceManipCourse);
+}

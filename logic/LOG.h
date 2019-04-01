@@ -23,6 +23,7 @@ public:
 	char update1minute(const int speed);
 	char * WhatIsYourName(void);
 	char showStatus(void);
+	void reset(void);
 };
 
 #endif

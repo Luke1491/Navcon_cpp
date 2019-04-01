@@ -6,7 +6,7 @@
  */ 
 
 #include <avr/io.h>
-#include "logic/Konsola.h"
+#include "logic/Console.h"
 #include "logic/Interface.h"
 #include "logic/common.h"
 
@@ -19,6 +19,7 @@ int main(void)
 	
     while (1) 
     {
+		
 		
     }
 }

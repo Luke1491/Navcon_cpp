@@ -27,6 +27,7 @@ struct Ship_voyage_data
 	int rzadanyCourse;
 	char rzadaneUstawienieSteru;    // od -35 do +35
 	long totalTimeofVoyage;			//total time of voyage in seconds
+	int computedMaxSpeed;			//equals propelerMaxRevolution / propellerRevolutionToSpeedRating
 };
 
 #endif

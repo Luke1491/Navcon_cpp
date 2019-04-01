@@ -4,15 +4,12 @@
  * Created: 2017-05-26 18:52:22
  *  Author: LUKE
  */ 
-
+#include "avr/io.h"
 
 #ifndef MAX7219_H_
 #define MAX7219_H_
 
-
-
-
-
+void SPI_init();
 void MAX7219_Init(void);
 void spiSendByte (char databyte);
 void MAX7219_writeData(char data_register, char data);

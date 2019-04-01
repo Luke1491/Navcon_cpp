@@ -48,6 +48,12 @@
 
 char digitsInUse = 8;
 
+void SPI_init()
+{
+	// SPI Enable, Master mode
+	SPCR |= (1 << SPE) | (1 << MSTR)| (1<<SPI2X); //TRYB MASTER, PRESKALER F_CPU/2
+}
+
 void MAX7219_Init(void) {
 	//SPI inicjalization made in enc28j60.c in enc28j60Init() function. Parameters set as below:
 	//If you not using enc28j60, uncomment below lines
@@ -55,8 +61,7 @@ void MAX7219_Init(void) {
 	// SCK MOSI CS/LOAD/SS
 	DDRB |= (1 << PIN_SCK) | (1 << PIN_MOSI) | (1 << PIN_SS);
 
-	// SPI Enable, Master mode
-	SPCR |= (1 << SPE) | (1 << MSTR)| (1<<SPI2X); //TRYB MASTER, PRESKALER F_CPU/2
+	SPI_init();
 	
 
 	// Decode mode to "Font Code-B"
