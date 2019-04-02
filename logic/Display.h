@@ -10,7 +10,7 @@ class Display
 	
 	
 	public:
-	Display();
+	Display(char typeOfCommunication);
 	
 	
 };

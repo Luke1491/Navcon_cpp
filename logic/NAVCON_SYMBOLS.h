@@ -1,6 +1,8 @@
 #ifndef NAVCON_SYMBOLS
 #define NAVCON_SYMBOLS
 
+#include <avr/io.h>
+
 //###############CONFIGURATION###############
 
 //CALL UPDATE AND REFRESH TIME (IN SECONDS) - DEFAULT 1s
@@ -109,5 +111,13 @@
 #define NAVCON_LUMINATION_LEVEL_NORMAL_DAY	0xA
 #define NAVCON_LUMINATION_LEVEL_DARK_DAY	0x6
 #define NAVCON_LUMINATION_LEVEL_NIGHT		0x0
+
+//this defines uses in if statement
+#define USE_I2C								0
+#define USE_SPI								1
+#define USE_USART							2
+#define USE_ONE_WIRE						3
+
+
 
 #endif
